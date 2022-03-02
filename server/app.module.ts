@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
+import { TransactionsController } from './controllers/transactions.controller';
 import { config } from './database/config';
 import { UsersModule } from './modules/users.module';
 import { AuthGuard } from './providers/guards/auth.guard';
@@ -13,7 +14,7 @@ import { GuardUtil } from './providers/util/guard.util';
 
 @Module({
   imports: [TypeOrmModule.forRoot(config), UsersModule],
-  controllers: [AppController],
+  controllers: [AppController, TransactionsController],
   providers: [
     UsersService,
     RolesService,

@@ -11,11 +11,15 @@ import { RefreshTokensController } from 'server/controllers/refresh_tokens.contr
 import { Role } from 'server/entities/role.entity';
 import { RolesService } from 'server/providers/services/roles.service';
 import { UserRole } from 'server/entities/user_role.entity';
+import { Question4Controller } from 'server/controllers/midterm/question4.controller';
+import { Question5Controller } from 'server/controllers/midterm/question5.controller';
+import { Todo } from 'server/entities/todo.entity';
+import { TodosService } from 'server/providers/services/todos.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, RefreshToken, Role, UserRole])],
-  controllers: [SessionsController, UsersController, RefreshTokensController],
-  providers: [UsersService, RolesService, RefreshTokensService, JwtService],
+  imports: [TypeOrmModule.forFeature([User, RefreshToken, Role, UserRole, Todo])],
+  controllers: [SessionsController, UsersController, RefreshTokensController, Question4Controller, Question5Controller],
+  providers: [UsersService, RolesService, RefreshTokensService, JwtService, TodosService],
   exports: [TypeOrmModule],
 })
 export class UsersModule {}

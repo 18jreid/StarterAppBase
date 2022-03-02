@@ -45,5 +45,18 @@ export default class Seeds implements Seeder {
     } else {
       console.log(`\nAdmin User with email ${process.env.ADMIN_EMAIL} already exists`);
     }
+
+    for (let i = 0; i < 10; i++) {
+      try {
+        await userRepository.insert({
+          email: `user${i}@usu.edu`,
+          firstName: `Generated${i}`,
+          lastName: 'User',
+          passwordHash: '',
+        });
+      } catch (e) {
+        console.log('User already exists!');
+      }
+    }
   }
 }

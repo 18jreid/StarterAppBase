@@ -18,8 +18,8 @@ export class UsersService {
     private rolesRepository: Repository<Role>,
   ) {}
 
-  findAll(relations: string[] = []) {
-    return this.usersRespository.find({ relations });
+  findAll() {
+    return this.usersRespository.find();
   }
 
   findBy(options: Record<string, any>, relations: string[] = []) {
